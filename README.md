@@ -14,3 +14,15 @@ CPSR[4:0]|模式﹙mode﹚
 11011    |未定義模式﹙Undefined﹚  
 11111    |系統模式h﹙System﹚  
 http://stenlyho.blogspot.com/2008/08/arm-register.html  
+  
+perf: (perf sched)  
+https://jasonblog.github.io/note/linux_tools/perf_--_linuxxia_de_xi_tong_xing_neng_diao_you_gon.html
+  
+ex.抓取特定CPU上的延遲
+perf record -e sched:sched_wakeup,sched:sched_wakeup_new,sched:sched_switch -C 93,189 -- sleep 1
+  
+debug packet lost in kernel:  
+1.dropwatch---------->https://blog.huoding.com/2016/12/15/574 source code:https://github.com/nhorman/dropwatch  
+2.perf monitor kfree_skb event--->perf record -g -a -e skb:kfree_skb; perf script  
+3.tcpdrop  
+4.systemtap script  
