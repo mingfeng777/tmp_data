@@ -10,6 +10,7 @@ SPL全名是Secondary Program Loader，當bootloader大小大於SRAM時，bootlo
 第二階段:初始化其他的硬體設備，檢查memory mapping，設定啟動參數...等  
 第一階段會做比較精簡有力的動作(運行的CODE主要是start.S相關，用組語寫是最精簡的)，第二階段會用C做較複雜的動作。  
 已知s3c2440使用4K的SRAM並將此協助nand flash開機動作稱為stepping stone，s3c2440如果是nand flash開機，初始位置0x00000000是在SRAM上(ARM初始運行位置是在0x00000000，MIPS則是0xBFC00000)  
+http://albert-oma.blogspot.com/2016/07/embedded-u-boot.html  
 
 CPSR:  
 CPSR暫存器和另外5個SPSR暫存器，主要功能是記錄最近的ALU運算狀態，控制中斷的致能﹙enable interrupt﹚與禁止﹙disable interrupt﹚。CPSR的4個運算結果旗標﹙flag﹚：N﹙Negative﹚、Z﹙Zero﹚ 、C﹙Carry﹚和V﹙Overflow﹚可以表式最近執行過的算術指令的狀態。此4位元使用了CPSR[28:34]。CPSR[8:27]為保留，留待ARM未來定義。CPSR[7:7]為將IRQ ﹙interrupt request﹚設為致能/禁止的位元。要控制Fiq ﹙fast interrupt﹚設為致能/禁止，則設定CPSR[6:6]的位元。CPSR[5:5]State Bit或Thumb Bit，T=0 指示ARM執行。T=1指示Thumb執行。  
