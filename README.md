@@ -2,6 +2,7 @@ Linker and Loader:
 http://wen00072.github.io/blog/2014/03/14/study-on-the-linker-script/  
   
 uboot if_changed:  
+The rule is in scripts/Kbuild.include.  
 old version say the following,  
 `# Find any prerequisites that are newer than target or that do not exist.`  
 `# (This is not true for now; $? should contain any non-existent prerequisites,`  
