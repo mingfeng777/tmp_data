@@ -1,7 +1,20 @@
 Linker and Loader:  
-http://wen00072.github.io/blog/2014/03/14/study-on-the-linker-script/
-
-
+http://wen00072.github.io/blog/2014/03/14/study-on-the-linker-script/  
+  
+uboot if_changed:  
+old version say the following,  
+# Find any prerequisites that are newer than target or that do not exist.  
+# (This is not true for now; $? should contain any non-existent prerequisites,  
+# but it does not work as expected when .SECONDARY is present. This seems a bug  
+# of GNU Make.)  
+# PHONY targets skipped in both cases.  
+newer-prereqs = $(filter-out $(PHONY),$?)  
+new version change the following,  
+# Find any prerequisites that is newer than target or that does not exist.  
+# PHONY targets skipped in both cases.  
+any-prereq = $(filter-out $(PHONY),$?) $(filter-out $(PHONY) $(wildcard $^),$^)  
+https://www.twblogs.net/a/5b85a9142b71775d1cd391f1  
+  
 uboot SPL理解(以下說明主要是ARM在嵌入式系統上)  
 flash分為nor flash和nand flash。nor flash可直接運行程式(原地執行,XIP)，nand flash不行。  
 要讓nand flash裡的程式運行，已知方法是將程式(bootloader)載入到SoC的SRAM，程式可運行在SRAM上，但bootloader大小有時會大於SRAM，因此步驟變成兩個stage。  
