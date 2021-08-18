@@ -3,16 +3,16 @@ http://wen00072.github.io/blog/2014/03/14/study-on-the-linker-script/
   
 uboot if_changed:  
 old version say the following,  
-# Find any prerequisites that are newer than target or that do not exist.  
-# (This is not true for now; $? should contain any non-existent prerequisites,  
-# but it does not work as expected when .SECONDARY is present. This seems a bug  
-# of GNU Make.)  
-# PHONY targets skipped in both cases.  
-newer-prereqs = $(filter-out $(PHONY),$?)  
+`# Find any prerequisites that are newer than target or that do not exist.`  
+`# (This is not true for now; $? should contain any non-existent prerequisites,`  
+`# but it does not work as expected when .SECONDARY is present. This seems a bug`  
+`# of GNU Make.)`  
+`# PHONY targets skipped in both cases.`  
+`newer-prereqs = $(filter-out $(PHONY),$?)`  
 new version change the following,  
-# Find any prerequisites that is newer than target or that does not exist.  
-# PHONY targets skipped in both cases.  
-any-prereq = $(filter-out $(PHONY),$?) $(filter-out $(PHONY) $(wildcard $^),$^)  
+`# Find any prerequisites that is newer than target or that does not exist.`  
+`# PHONY targets skipped in both cases.`  
+`any-prereq = $(filter-out $(PHONY),$?) $(filter-out $(PHONY) $(wildcard $^),$^)`  
 https://www.twblogs.net/a/5b85a9142b71775d1cd391f1  
   
 uboot SPL理解(以下說明主要是ARM在嵌入式系統上)  
