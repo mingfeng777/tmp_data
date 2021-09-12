@@ -56,7 +56,7 @@ Makefile:
 https://www.cnblogs.com/shiwenjie/category/981510.html  
   
 https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/discuss/1458289/Mask-DP-4-ms  
-先尋找字串中的最大迴文數，暴力方法遍歷所有可能並存在陣列中。  
+先尋找字串中的最大迴文數，暴力方法遍歷所有可能並存在陣列中(用空間暫時儲存結果，DP)。  
 遍歷方法是判斷字元出現與否(1bit)，字串字元都出現就是都是1，可轉成數字表示  
 例:  字串abcd，每個字元可出現或沒出現，出現者為1，相反則為0，出現abd->1101(二進位表示)->13(十進位)。因此所有可能就是0~15(或16-1)  
 第二段的子遮罩，https://cp-algorithms.com/algebra/all-submasks.html  
