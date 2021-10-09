@@ -61,3 +61,13 @@ https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-s
 例:  字串abcd，每個字元可出現或沒出現，出現者為1，相反則為0，出現abd->1101(二進位表示)->13(十進位)。因此所有可能就是0~15(或16-1)  
 第二段的子遮罩，https://cp-algorithms.com/algebra/all-submasks.html  
 但其實最後的迴圈還是會有重複性，例如:mask是110000，連續0就會有重複的多餘動作  
+
+
+-------------------------------------------------------------------------------------------------  
+USB debug need enable  
+->"CONFIG_USB_MON"  
+location is  
+->"driver/usb/mon/"  
+description file  
+->"Documentation/usb/usbmon.txt"  
+http://www.usbzh.com/article/detail-330.html  
