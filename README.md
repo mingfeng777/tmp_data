@@ -71,3 +71,6 @@ location is
 description file  
 ->"Documentation/usb/usbmon.txt"  
 http://www.usbzh.com/article/detail-330.html  
+  
+hub driver  
+https://www.cxybb.com/article/lujian186/82085535  
