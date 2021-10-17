@@ -88,3 +88,6 @@ netfilter hook example
 http://neokentblog.blogspot.com/2014/06/netfilter-hook.html  
 default packet flow  
 https://lyt0112.pixnet.net/blog/post/305966017-linux%E5%85%A7%E6%A0%B8%E4%B8%ADnetfilter-hook%E7%9A%84%E4%BD%BF%E7%94%A8  
+other  
+重要流程圖  
+http://bbs.chinaunix.net/thread-3749229-1-1.html
