@@ -78,6 +78,7 @@ https://www.cxybb.com/article/lujian186/82085535
 -------------------------------------------------------------------------------------------------  
 debug netfilter  
 /net/netfilter/core.c  
+CONFIG_NETFILTER_DEBUG 好像有些rule會直接寫回傳值(okfn)，或搜尋完畢回傳預設值，開啟這個才會讓所有封包都進nf_hook_slow
 important function "nf_hook_slow"  
 https://www.cnblogs.com/haoqingchuan/p/6240483.html  
 https://www.cnblogs.com/wanpengcoder/p/11755574.html  
