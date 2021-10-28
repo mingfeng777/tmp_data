@@ -95,5 +95,7 @@ http://bbs.chinaunix.net/thread-3749229-1-1.html
 -------------------------------------------------------------------------------------------------  
 樹梅派4的OpenWrt 選項  
 https://ithelp.ithome.com.tw/articles/10255724?sc=rss.qu  
+openwrt github  
+https://github.com/openwrt/openwrt  
 OpenWRT關於樹梅派數據  
 https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi  
