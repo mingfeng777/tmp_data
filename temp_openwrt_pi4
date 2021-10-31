@@ -19,7 +19,7 @@
   %::
     @+$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq (第一行)
     (確認.config) (第二行)
-    ?????
+    @+$(ULIMIT_FIX) $(SUBMAKE) -r $@ $(if $(WARN_PARALLEL_ERROR),false) (第三行)
   (上面有變數SDK隔開)
   
   第一行，@+$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq
@@ -55,6 +55,7 @@
   不是SDK就複製一份.config，並將defconfi輸出到tmp/.config來比較是否選單更改後有同步問題
   
   第三行
-  
+  ulimit限制最大開檔個數1024，進入stage 2
   --------------
-
+  Stage 2:
+  
