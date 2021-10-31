@@ -58,5 +58,9 @@
   第三行
   ulimit限制最大開檔個數1024，進入stage 2，目標是world
   --------------
+  $(SUBMAKE)位在include/verbose.mk
+  因為V=s，所以裡面包一個shell function，再call function，裡面可看到帶了一個-s
+  SUBMAKE=cmd() { $(SILENT) $(MAKE) -s "$$@" < /dev/null || { echo "make $$*: build failed. Please re-run make wit    h -j1 V=s or V=sc for a higher verbosity level to see what's going on"; false; } } 8>&1 9>&2; cmd
+  
   Stage 2:
   
