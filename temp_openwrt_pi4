@@ -1,0 +1,12 @@
+  openwrt的Makefile一開始設定運行的語言設定，判斷運行路徑的錯誤，及設定環境變數PATH
+  接著出現跟busybox一樣的動作，分運行的stage，(後面應該有類似sub make，重新進入此Makefile，並且繼承判斷的變數值)
+  ifneq ($(OPENWRT_BUILD),1)
+  ...(stage 1)
+  else
+  ...(stage 2)
+  endif
+  劃分的變數就是OPENWRT_BUILD，裡面設定還帶override，避免如果進來Makefile時有帶值(command line，make OPENWRT_BUILD=99)
+  此openwrt使用TOPDIR:=$(CURDIR)，因此如要包此openwrt(外面再一層Makefile)，外面使用的Makefile指向一定要用-C選項，不可只用-f XXX/Makefile
+  
+  Stage 1:
+  
