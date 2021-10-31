@@ -63,4 +63,4 @@
   SUBMAKE=cmd() { $(SILENT) $(MAKE) -s "$$@" < /dev/null || { echo "make $$*: build failed. Please re-run make wit    h -j1 V=s or V=sc for a higher verbosity level to see what's going on"; false; } } 8>&1 9>&2; cmd
   
   Stage 2:
-  
+  https://blog.csdn.net/qq_20677327/article/details/105680788#rootfs_55
