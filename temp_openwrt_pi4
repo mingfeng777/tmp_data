@@ -17,7 +17,8 @@
   前兩個只是一些變數或function而已，重要是第三個toplevel.mk
   預設的make，對應到的是
   %::
-    @+$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq
+    @+$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq (第一行)
+    (確認.config) (第二行)
     ?????
   (上面有變數SDK隔開)
   
@@ -49,5 +50,11 @@
   再跑menuconfig
   
   第二行
+  有SDK flag，
+  是SDK就直接輸出defconfig到.config
+  不是SDK就複製一份.config，並將defconfi輸出到tmp/.config來比較是否選單更改後有同步問題
+  
+  第三行
+  
   --------------
 
