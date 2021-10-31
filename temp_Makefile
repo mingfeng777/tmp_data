@@ -1,5 +1,6 @@
 Makefile:  
-https://www.cnblogs.com/shiwenjie/category/981510.html  
+[https://www.cnblogs.com/shiwenjie/category/981510.html](https://www.cnblogs.com/shiwenjie/category/981510.html)  
+
 -------  
 %:: 和 %: 區別單冒號和雙冒號  
 當同一個檔案作為多個雙冒號規則的目標時。這些不同的規則會被獨立的處理,而不是像普通規則那樣合併所有的依賴到一個目標檔案  
