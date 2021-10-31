@@ -38,5 +38,10 @@
   對應的位置是stage 2的
   prereq: $(target/stamp-prereq) tmp/.prereq_packages
     ...
+  (一開始納悶的為什麼要override OPENWRT_BUILD大概也知道了。
+  裡面多次重新進入Makefile，並且用command line指定make OPENWRT_BUILD=，
+  如果沒有寫override，該變數無法在Makefile裡面被更改，
+  最後那行@+$(NO_TRACE_MAKE) -r -s $@
+  就會進入stage 1而不是stage 2)
   --------------
 
