@@ -8,7 +8,7 @@
   劃分的變數就是OPENWRT_BUILD，裡面設定還帶override，避免如果進來Makefile時有帶值(command line，make OPENWRT_BUILD=99)
   此openwrt使用TOPDIR:=$(CURDIR)，因此如要包此openwrt(外面再一層Makefile)，外面使用的Makefile指向一定要用-C選項，不可只用-f XXX/Makefile
   (一層一層包進去，如果要找最一開始所在的Makefile位置，參考kbuild作法使用MAKEFILE_LIST，撈出第一個即是，abs_top_makefile := $(realpath $(firstword $(MAKEFILE_LIST))))
-  
+  -------------
   Stage 1:
   使用了三個檔
   include/debug.mk
@@ -20,4 +20,23 @@
     @+$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq
     ?????
   (上面有變數SDK隔開)
+  
+  第一行，@+$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq
+  它重複呼叫了Makefile並且指定目標prereq，此時運行的是include/toplevel.mk裡面的
+  prereq:: prepare-tmpinfo .config
+    @+$(NO_TRACE_MAKE) -r -s $@
+  (神奇解法，因為include/toplevel.mk指定成PREP_MK= OPENWRT_BUILD= QUIET=0，所以再次進來Makefile時還是走stage 1)
+  ($(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq運行起來就是OPENWRT_BUILD= QUIET=0 make V=s -r -s prereq)
+  prepare-tmpinfo: FORCE
+    @+$(MAKE) -r -s staging_dir/host/.prereq-build $(PREP_MK)
+    (上面那行又再次進來Makefile了，而且還是stage 1，搜尋該目標之後，主要是編一個host tool，mkhash)
+    ...
+    (接著就是使用其它.mk運行其它事情)
+    ...
+  stage 1最後的運行是@+$(NO_TRACE_MAKE) -r -s $@
+  沒有特別設定運行起來是make V=s -r -s prereq
+  對應的位置是stage 2的
+  prereq: $(target/stamp-prereq) tmp/.prereq_packages
+    ...
+  --------------
 
