@@ -15,7 +15,8 @@
   include/depends.mk
   include/toplevel.mk
   前兩個只是一些變數或function而已，重要是第三個toplevel.mk
-  預設的make，對應到的是
+  不帶目標的make，對應到的是world:
+  又對應到如下，此時$@的值為world
   %::
     @+$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq (第一行)
     (確認.config) (第二行)
@@ -55,7 +56,7 @@
   不是SDK就複製一份.config，並將defconfi輸出到tmp/.config來比較是否選單更改後有同步問題
   
   第三行
-  ulimit限制最大開檔個數1024，進入stage 2
+  ulimit限制最大開檔個數1024，進入stage 2，目標是world
   --------------
   Stage 2:
   
