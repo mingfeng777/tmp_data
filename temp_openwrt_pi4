@@ -33,7 +33,7 @@
     ...
     (接著就是使用其它.mk運行其它事情)
     ...
-  prereq:: 最後的運行是@+$(NO_TRACE_MAKE) -r -s $@
+  prepare-tmpinfo 最後的運行是@+$(NO_TRACE_MAKE) -r -s $@
   沒有特別設定運行起來是make V=s -r -s prereq
   重新進入Makefile對應的位置是stage 2的
   prereq: $(target/stamp-prereq) tmp/.prereq_packages
@@ -43,6 +43,10 @@
   如果沒有寫override，該變數無法在Makefile裡面被更改，
   那行@+$(NO_TRACE_MAKE) -r -s $@  就會進入stage 1而不是stage 2)
   (但，第一行多次運行stage 1後跳到stage 2，接著回來stage 1繼續運行下面第二行@@)
+  .config如果一開始沒有下過make menuconfig，
+  將會運行include/toplevel.mk的scripts/config/%onf:
+  先去產生工具mconf, conf ...等
+  再跑menuconfig
   
   第二行
   --------------
