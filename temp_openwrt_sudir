@@ -131,3 +131,9 @@ $(eval $(call subdir,$(curdir)))
    target/install:  target/linux/install
 
 
+subdir function 主要產生子目錄下的各個目錄的規則，產生的規則還會根據是否是prereq而動態增減規則，上面印出來的是stage 1時的規則。
+stage 1運行到中間切過去stage 2時運行prereq後要回到stage1，上面印的時間點就是stage1切過去stage2後所產生的規則!!!!
+
+
+
+
