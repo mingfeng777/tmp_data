@@ -192,7 +192,36 @@ log_make對target/linux/prereq:所產生的動作其實只有
 ------------------------------------------------------------------
 
 要收尾了~~~
-openwrt下面有一個target目錄
+openwrt下面有一個target目錄，該目錄下面還有四個獨立的目錄
+openwrt----target----imagebuilder
+                  |--linux
+                  |--sdk
+                  |--toolchain
+最上層的openwrt(第一層)下面可以有多個子目錄(第二層)，target目錄是其中一個，每個openwrt下的子目錄(第二層)都會有自己的Makefile，來決定要如何編譯，
+而該子目錄(第二層)底下又有多個子目錄(第三層)，
+通常最上層的Makefile要能控制第二層、第三層或更多層的控制(就是要有每一個的規則)
+直接控制第一層的編譯，就是直接下make 和所要的目標
+直接控制第二層的編譯，這裡選用的是include第二層的Makefile，所以不需要用-C只要選用所提供的規則即可。這裡又針對所要編譯的目錄和目標做連結(可減少混亂的情況)
+並且預設該有的目標已被寫在rules.mk的變數DEFAULT_SUBDIR_TARGETS:= clean download prepare compile update refresh prereq dist distcheck configure check check-depends
+  make (第二層的路徑)/(所想要的目標) 
+直接控制第三層的編譯，所產生的規則就是多一個路徑而已
+  make (第二層路徑)/(第三層路徑)/(所想要的目標)
 
+在第二層target的Makefile裡面
+$(curdir)/subtargets:=install                        ，指定了不管你用什麼目標，一定會產生install這個目標規則。如上面拆解四，隨然目標是prereq但還是伴隨install
+$(curdir)/builddirs:=linux sdk imagebuilder toolchain，說明第三層有哪些目錄要編譯，之後要產生可直接控制第三層的規則
+$(curdir)/builddirs-default:=linux                   ，這是說要產生直接控制第二層規則時，預設會依賴那些第三層的規則呢?
+                                                       例: target/prereq:  target/linux/prereq
+                                                           因為這裡上面的例子是stage1的prereq，所以只有這行，可以想像stage2應該要有
+                                                           target/clean:     target/linux/clean
+                                                           target/download:  target/linux/download
+                                                           target/prepare:   target/linux/prepare
+                                                           ....
+                                                           target/check-depends:   target/linux/check-depends
+$(curdir)/builddirs-install:=linux $(if $(CONFIG_SDK),sdk) $(if $(CONFIG_IB),imagebuilder) $(if $(CONFIG_MAKE_TOOLCHAIN),toolchain)，
+要直接控制第二層的規則所產生的依賴第三層的規則，除了預設之外也可以指定要依賴第三層的那些目錄，
+例:target/install:  target/linux/install
+   這例子剛好看不出來，因為上面的CONFIG值通通沒有選，如果都有選就會變成
+   target/install:  target/linux/install target/sdk/install target/imagebuilder/install target/toolchain/install
 
 
