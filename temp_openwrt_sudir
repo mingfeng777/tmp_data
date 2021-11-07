@@ -141,7 +141,7 @@ warn_level function在include/debug.mk裡面，就是產生規則的關鍵了，
   要變成讓Makefile能使用的規則rule，就是要用到eval function，變成$(eval $(call warn_level,dir_path,debug_string,relation_string,all: dep_XXXXX))
   此時所拆解後的規則就是
     all: dep_XXXXX
-  到這邊其實只有target跟依賴關係，以上面拆解四來說只有
+  到這邊其實只有目標跟依賴關係，以上面拆解四來說只有
   target/linux/prereq:
   target/linux/install:
   target/sdk/prereq:
