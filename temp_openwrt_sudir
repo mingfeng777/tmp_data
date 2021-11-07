@@ -132,7 +132,27 @@ $(eval $(call subdir,$(curdir)))
 
 
 subdir function 主要產生子目錄下的各個目錄的規則，產生的規則還會根據是否是prereq而動態增減規則，上面印出來的是stage 1時的規則。
-stage 1運行到中間切過去stage 2時運行prereq後要回到stage1，上面印的時間點就是stage1切過去stage2後所產生的規則!!!!(非常重要，因為這時間點看不到其他rules，比如compile)
+第一個foreach是用來指定每一個在target目錄下的每個子目錄，$($(1)/builddirs)拆解後變成$($(curdir)/builddirs)，而$(curdir)/builddirs:=linux sdk imagebuilder toolchain，裡面也確實有這些目錄
+第二個foreach是用來產生每個目錄所需的Makefile rules的目標(比如: clean compile ...等)，在這裡有一個固定的目標$($(1)/subtargets)，拆解後對應到$(curdir)/subtargets:=install
+  stage 1運行到中間切過去stage 2時運行prereq後要回到stage1，上面印的時間點就是stage1切過去stage2後所產生的規則!!!!(非常重要，因為這時間點看不到其他rules，比如compile)
+  在進來時指令是$(PREP_MK) $(NO_TRACE_MAKE) -r -s prereq，此時Makefile提供的變數MAKECMDGOALS已經是prereq
+  subdir.mk前面的幾行設定了變數:
+  ifeq ($(MAKECMDGOALS),prereq)
+    SUBTARGETS:=prereq
+    PREREQ_ONLY:=1
+  else
+    SUBTARGETS:=$(DEFAULT_SUBDIR_TARGETS)
+  endif
+  所以上面拆解四只出現每個目錄(linux sdk imagebuilder toolchain)的prereq和install
+  如果不是prereq的話，SUBTARGETS就會是不一樣的值了，$(DEFAULT_SUBDIR_TARGETS)一開始的初始值在rules.mk
+  DEFAULT_SUBDIR_TARGETS:=clean download prepare compile update refresh prereq dist distcheck configure check check-depends原本有這麼多要創建
+第三個foreach是buildtype，因為這個target目錄沒有，所以就跳過了，不然好像也會產生規則
+第四個foreach是要產生每個規則下面的shell命令，主要是log_make function
+第五個foreach，$(foreach target,$(SUBTARGETS) $($(1)/subtargets),$(call subtarget,$(1),$(target)))，
+是在說如果沒有指定到這麼下面的目錄(target/linux target/sdk target/targetimagebuilder target/toolchain)，我只指定到target目錄
+那預設到底要跑誰? 裡面的subtarget function的subtarget-default function，藉由是否有設定相關變數來決定(最下面說明)，這裡產生了
+   target/prereq:  target/linux/prereq
+   target/install:  target/linux/install
 
 warn function在include/debug.mk裡面，沒特別設定就是沒有開debug，如果有開就只是印警告訊息$(warning XXX)，沒開就是空的
 warn_level function在include/debug.mk裡面，就是產生規則的關鍵了，不管有沒有開debug都會把第四個參數$(4)保留下來
@@ -168,4 +188,8 @@ subdir_make_opts function產生-r -C target/linux BUILD_SUBDIR="target/linux" BU
 log_make對target/linux/prereq:所產生的動作其實只有
   @+  /home/minfeng/openwrt/scripts/time.pl "time: target/linux/prereq" $(SUBMAKE) -r -C target/linux BUILD_SUBDIR="target/linux" BUILD_VARIANT="" prereq
 後面的'|| .....'是subdir function所產生
+
+------------------------------------------------------------------
+
+
 
