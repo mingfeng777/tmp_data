@@ -224,4 +224,5 @@ $(curdir)/builddirs-install:=linux $(if $(CONFIG_SDK),sdk) $(if $(CONFIG_IB),ima
    這例子剛好看不出來，因為上面的CONFIG值通通沒有選，如果都有選就會變成
    target/install:  target/linux/install target/sdk/install target/imagebuilder/install target/toolchain/install
 
+另外一個package/Makefile前面也就看得懂了
 
