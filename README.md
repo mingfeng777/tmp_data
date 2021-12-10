@@ -103,3 +103,13 @@ openwrt github
 https://github.com/openwrt/openwrt  
 OpenWRT關於樹梅派數據  
 https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi  
+
+-------------------------------------------------------------------------------------------------  
+
+USB_20's communication
+
+https://www.twblogs.net/a/5e718fedbd9eee2117c76da3  
+https://blog.csdn.net/u012028275/article/details/113796198  
+http://top.ampbb.net/search/label/USB%E5%AD%B8%E7%BF%92%E5%BF%83%E5%BE%97  
+USB spec  
+https://www.usb.org/documents  
