@@ -105,6 +105,10 @@ OpenWRT關於樹梅派數據
 https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi  
 
 -------------------------------------------------------------------------------------------------  
+SMS server tool
+http://smstools3.kekekasvi.com/  
+
+-------------------------------------------------------------------------------------------------  
 
 USB_20's communication
 
