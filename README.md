@@ -117,3 +117,8 @@ https://blog.csdn.net/u012028275/article/details/113796198
 http://top.ampbb.net/search/label/USB%E5%AD%B8%E7%BF%92%E5%BF%83%E5%BE%97  
 USB spec  
 https://www.usb.org/documents  
+
+-------------------------------------------------------------------------------------------------  
+
+simple bus driver device 
+http://izobs.github.io/%E5%AD%A6%E4%B9%A0/bus-device-driver/  
