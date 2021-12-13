@@ -120,5 +120,5 @@ https://www.usb.org/documents
 
 -------------------------------------------------------------------------------------------------  
 
-simple bus driver device 
+simple bus driver device  
 http://izobs.github.io/%E5%AD%A6%E4%B9%A0/bus-device-driver/  
