@@ -122,17 +122,18 @@ https://www.usb.org/documents
 
 simple bus driver device  
 http://izobs.github.io/%E5%AD%A6%E4%B9%A0/bus-device-driver/  
+
 -------------------------------------------------------------------------------------------------
 https://leetcode.com/problems/find-substring-with-given-hash-value/discuss/1730321/JavaC%2B%2BPython-Sliding-Window-%2B-Rolling-Hash  
 https://leetcode.com/problems/find-substring-with-given-hash-value/discuss/1730118/Reversed-Rabin-Karp-vs.-Inverse-Modulo  
 
-hash是能以O(1)快速尋找對應的值。將輸入的值轉換成特定的KEY，比較不同的是轉換的公式。
-最好的hash就是沒有碰撞
-輸入如果是英文字串，abc和cba是不一樣的，轉換出來的KEY也不同，英文有26個，所以要能表示每個字母所需要的編號就是1~26(27進制)
-假設輸入只有a~i，則要能表示每個字母所需要的編號就是1~9(10進制)，就能很直覺有一個轉換公式並且產生唯一KEY，例:h(abcde)=1234
-要讓英文字串產生唯一key的hash簡單方法就是27進制(字串越長計算越大以及KEY也會很驚人)
-產生唯一KEY值，如果是密碼會很不可靠，容易猜到，27就會變成很大的數字
-modulo m用來限制值域範圍，m太小也不好，所以m也很大
-比27進制小或有modulo值，都有可能產生碰撞
-這樣大概比較容易理解公式表達的意思，但比較厲害的是modulo的特性
+hash是能以O(1)快速尋找對應的值。將輸入的值轉換成特定的KEY，比較不同的是轉換的公式。  
+最好的hash就是沒有碰撞  
+輸入如果是英文字串，abc和cba是不一樣的，轉換出來的KEY也不同，英文有26個，所以要能表示每個字母所需要的編號就是1~26(27進制)  
+假設輸入只有a~i，則要能表示每個字母所需要的編號就是1~9(10進制)，就能很直覺有一個轉換公式並且產生唯一KEY，例:h(abcde)=1234  
+要讓英文字串產生唯一key的hash簡單方法就是27進制(字串越長計算越大以及KEY也會很驚人)  
+產生唯一KEY值，如果是密碼會很不可靠，容易猜到，27就會變成很大的數字  
+modulo m用來限制值域範圍，m太小也不好，所以m也很大  
+比27進制小或有modulo值，都有可能產生碰撞  
+這樣大概比較容易理解公式表達的意思，但比較厲害的是modulo的特性  
 
