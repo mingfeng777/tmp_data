@@ -136,4 +136,16 @@ hash是能以O(1)快速尋找對應的值。將輸入的值轉換成特定的KEY
 modulo m用來限制值域範圍，m太小也不好，所以m也很大  
 比27進制小或有modulo值，都有可能產生碰撞  
 這樣大概比較容易理解公式表達的意思，但比較厲害的是modulo的特性  
-
+  
+公式中p和k都是很大的數字，實際運算會溢位，使用同餘(等價)運算縮減複雜度  
+modulo具有加法分配律  
+https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4  
+(a+b) mod n = [(a mod n) + (b mod n)] mod n  
+上面式子是等於，可再轉成同餘式子(等價)變成(去a或b的都還是等價)  
+[(a mod n) + b] mod n  
+或  
+[a + (b mod n)] mod n  
+  
+從原公式上抓兩個出來看就是  
+(s[0] * p^0 + s[1] * p^1) mod m 同餘 (s[0] + (s[1] * p^1) mod m) mod m  
+(a是s[0] * p^0，b是(s[1] * p^1) )  
