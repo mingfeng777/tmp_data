@@ -149,3 +149,19 @@ https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4
 從原公式上抓兩個出來看就是  
 (s[0] * p^0 + s[1] * p^1) mod m 同餘 (s[0] + (s[1] * p^1) mod m) mod m  
 (a是s[0] * p^0，b是(s[1] * p^1) )  
+  
+因為分配律，所以(p^k) mod m是可以解的，如果k=4，可以變成((((p mod m)(p mod m) mod m)(p mod m)) mod m)(p mod m) mod m  
+原本的式子，k是從0開始，接著+1遞增，還是可以硬解  
+但總複雜度就會變成O(nk)  
+  
+其它文章中有提到rehash  
+但光從字面來看很難理解意思  
+主要是說下一個要計算的hash值  
+可從上一個hash值經過運算而來  
+很像fibonacci，每個值都是前兩項之和  
+計算第N項的fibonacci數，有遞迴有迴圈(DP)  
+  
+原本式子要計算下一個hash，原式子要在mod m裡面扣除最低項再除以p再加上s[k-1]\*p^(k-1)  
+但除以p來降低式子項次的動作，在mod 的世界中有別的意思  
+叫做乘法反元素  
+如果沒有mod，5除以5等於1  
