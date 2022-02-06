@@ -175,3 +175,11 @@ https://zh.wikipedia.org/wiki/%E5%90%8C%E9%A4%98
 https://mark-lin.com/posts/20200625/  (比較詳細，原來strstr也是用這方法)  
 https://zh.wikipedia.org/wiki/%E6%8B%89%E5%AE%BE-%E5%8D%A1%E6%99%AE%E7%AE%97%E6%B3%95  (拉賓-卡普演算法)  
 https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4  (mod分配律)  
+  
+-------------------------------------------------------------------------------------------------  
+https://leetcode.com/problems/minimum-time-to-remove-all-cars-containing-illegal-goods/discuss/1748424/Python-maximum-sum-on-subarray-explained  
+這好厲害，只是空間複雜度也可以是O(1)  
+就像fibonacci，問第N項的值，不需要紀錄1~(n-1)所有的值  
+https://leetcode.com/problems/minimum-time-to-remove-all-cars-containing-illegal-goods/discuss/1748704/JavaC%2B%2BPython-Short-One-Pass-O(1)-Space  
+這也很厲害  
+兩個都是用Kadane's 演算法，下面那個算變形吧，但原理還是一樣  
