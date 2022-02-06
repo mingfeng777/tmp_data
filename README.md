@@ -165,9 +165,13 @@ https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4
 但除以p來降低式子項次的動作，在mod 的世界中有別的意思  
 叫做乘法反元素  
 如果沒有mod，5除以5等於1  
-剩下的參考資料講得很清楚
-
-所以要從右到左，變成扣除s[k-1]\*p^(k-1)再乘上p再加上最低項
-
-wiki有一個64位元的程式
-https://zh.wikipedia.org/wiki/%E5%90%8C%E9%A4%98
+剩下的參考資料講得很清楚  
+  
+所以要從右到左，變成扣除s[k-1]\*p^(k-1)再乘上p再加上最低項  
+  
+wiki有一個64位元的程式  
+https://zh.wikipedia.org/wiki/%E5%90%8C%E9%A4%98  
+參考資料:  
+https://mark-lin.com/posts/20200625/  (比較詳細，原來strstr也是用這方法)  
+https://zh.wikipedia.org/wiki/%E6%8B%89%E5%AE%BE-%E5%8D%A1%E6%99%AE%E7%AE%97%E6%B3%95  (拉賓-卡普演算法)  
+https://zh.wikipedia.org/wiki/%E6%A8%A1%E9%99%A4  (mod分配律)  
