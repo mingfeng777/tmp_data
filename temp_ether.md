@@ -53,5 +53,10 @@ https://www.796t.com/post/OTAyanU=.html
 https://www.twblogs.net/a/5b986f742b717736c62426e4  
 重要例子  
 https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/609783/  
-
+  
+-------------------------------------------------------------------------------------------
+other  
+http://mt7688jackychi.blogspot.com/2016/07/mt7688duo.html  
+配置WAN/LAN  https://www.jianshu.com/p/02150e24a5e8  
+wifi調試https://www.twblogs.net/a/5c177038bd9eee5e41844991  
 
