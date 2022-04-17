@@ -44,7 +44,10 @@ https://blog.csdn.net/lailaiquququ11/article/details/119790507
 https://ma405th.wordpress.com/  
 https://www.jannet.hk/virtual-lan-vlan-zh-hant/  
 http://www.tsnien.idv.tw/Manager_WebBook/chap8/8-1%20%E8%99%9B%E6%93%AC%E5%8D%80%E5%9F%9F%E7%B6%B2%E8%B7%AF%E7%B0%A1%E4%BB%8B.html  
-
+  
+swconfig框架及檔案位置    
+https://www.twblogs.net/a/5b8b29472b717718832dbfa0  
+  
 netlink  
 https://www.796t.com/post/OTAyanU=.html  
 https://www.twblogs.net/a/5b986f742b717736c62426e4  
