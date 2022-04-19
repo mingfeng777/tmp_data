@@ -38,6 +38,20 @@ https://www.twblogs.net/a/5cb8fdf1bd9eee0eff45cd37
 FPGA實作簡單ethernet  
 https://blog.csdn.net/qimoDIY/article/details/99519624  
   
+之前一直沒時間看，怕資料太多，最近有空花幾天看完了框架  
+首先是CPU到底集成了什麼?MAC或PHY  
+文章中也講了很多  
+目前我看到的都是CPU集成MAC，PHY是獨立晶片  
+比較重要的也是CPU集成MAC的架構  
+因為就算是CPU集成MAC和PHY，有些CPU只是作作樣子而已，對於PHY的控制還是一樣(就只是硬體包進去而已= =?)，而且概念跟CPU集成MAC一樣  
+最最最重要的是，802.3有規定PHY暫存器!!!!  
+如果是CPU集成MAC和PHY，PHY的控制暫存器，就有點看不到802.3的規定了，  
+802.3規定暫存器原本目的是，讓不同的PHY獨立晶片可連接其他家的MAC層(不是只有硬體，是軟體的控制)  
+CPU集成了MAC和PHY的架構，使的PHY根本不可能拆開，並且都合併在CPU上了，控制方法也應是直接操作暫存器，而不是控制MII介面(但有些晶片都集成了還是用MII)
+另外通訊界面MII主要也是用在MAC和PHY之間的溝通  
+  
+  
+
 -------------------------------------------------------------------------------------------
 switch vlan  
 https://blog.csdn.net/lailaiquququ11/article/details/119790507  
