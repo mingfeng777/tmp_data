@@ -51,7 +51,27 @@ https://blog.csdn.net/qimoDIY/article/details/99519624
 CPU集成了MAC和PHY的架構，使的PHY根本不可能拆開，並且都合併在CPU上了，控制方法也應是直接操作暫存器，而不是控制MII介面(但有些晶片都集成了還是用MII)  
 另外通訊界面MII主要也是用在MAC和PHY之間的溝通  
   
-  
+ether的初始化  
+主要是PIN腳要正確，PIN腳指的是CPU出去的腳位  
+如果PHY是獨立晶片，要確認的是MDIO、MDC及所選用的通訊(MII/RMII/GMII/RGMII...等)(目前只看過接一個PHY而已，所以只有一組，但CPU可能提供多組，看硬體怎麼接)  
+如果CPU集成MAC和PHY，要確認的是TX的+-和RX的+-(接RJ45的頭)(看有幾個portr就* 4)  
+有些CPU對於有些PIN腳是沒有multi function，所以就不用確認  
+PIN腳的初始化，有些可以改在DTS，有些修改的位置是arch目錄底下會有一開始的一些初始化  
+(有些PIN腳必須一開始就確定好，有些則是可以在user space切換)  
+接著初始化MAC層的DMA(SDM??)，及ether參數  
+再初始化PHY(init switch)  
+在802.3裡規定有兩個暫存器是基本的(詳細看文章)  
+register0 是控制用的  
+register1 是讀取狀態用的  
+裡面也講到關於PHY晶片，有存放廠商的申請識別碼  
+(其實都一樣，一個陌生的裝置，基本上一定有描述該裝置的資料。像flash，USB裝置，甚至一套完整的軟體，都會有資料在描述它是什麼。  
+比如完一個RPG遊戲，有些資料會是ini檔，主要就是開檔讀資料。對USB裝置來說，裝置上電通訊後，就會遵照規則把資料送到kernel上(VID、PID、安培、傳輸間隔、end point...等))  
+對PHY來說，把資料放在暫存器上，可藉由讀取reigster來了解目前狀態  
+如果PHY是獨立晶片，必須先讓MDIO ready  
+
+
+CLCK決定速度10M 100M 1G(確認???)
+10M是半雙工
 
 -------------------------------------------------------------------------------------------
 switch vlan  
